@@ -300,6 +300,28 @@ class MyApp(QMainWindow, main_ui):
         qpixmap = cvtPixmap(draw_img, (display_label.width(), display_label.height()))
         display_label.setPixmap(qpixmap)
 
+    def getGraph(self, xs, ys_diameter, pre_idx):
+        max_y = max(ys_diameter)
+        if self.max_y < max_y:
+            self.max_y = max_y
+
+        ax = self.fig.add_subplot(1, 1, 1)
+
+        ax.clear()
+        ax.plot(xs, ys_diameter)
+
+        plt.scatter(pre_idx, max_y + 8, marker='o', color='salmon')
+        plt.ylim(-1, self.max_y + 10)
+        plt.xticks(rotation=45, ha='right')
+        plt.ylabel('Pupil size')
+
+        self.fig.canvas.draw()
+        img = np.fromstring(self.fig.canvas.tostring_rgb(), dtype=np.uint8, sep='')
+        img = img.reshape(self.fig.canvas.get_width_height()[::-1] + (3,))
+        img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
+
+        return img
+
     def mousePressEvent(self, event):
         if self.display_img:
             rel_x = (event.x() - self.display_label.x()) / self.display_label.width()
@@ -549,29 +571,6 @@ class MyApp(QMainWindow, main_ui):
 
             self._showImage(post_img, self.display_label)
             self._showImage(binary_eye, self.display_binary)
-
-    def getGraph(self, xs, ys_diameter, pre_idx):
-        max_y = max(ys_diameter)
-        if self.max_y < max_y:
-            self.max_y = max_y
-
-        ax = self.fig.add_subplot(1, 1, 1)
-
-        ax.clear()
-        ax.plot(xs, ys_diameter)
-
-        plt.cla()
-        plt.scatter(pre_idx, max_y + 8, marker='o', color='salmon')
-        plt.ylim(-1, self.max_y + 10)
-        plt.xticks(rotation=45, ha='right')
-        plt.ylabel('Pupil size')
-
-        self.fig.canvas.draw()
-        img = np.fromstring(self.fig.canvas.tostring_rgb(), dtype=np.uint8, sep='')
-        img = img.reshape(self.fig.canvas.get_width_height()[::-1] + (3,))
-        img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
-
-        return img
 
     def _center(self):
         qr = self.frameGeometry()

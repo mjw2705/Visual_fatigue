@@ -12,3 +12,16 @@
 
 - 동공 크기 값 보간 
   - 평균1/3이하 값 0으로  → 일반 값 두개 사이 0프레임 하나 제거 → 0프레임 두개 사이에 일반값 0으로
+  
+
+### recording code
+눈 영상 취득 녹화 GUI
+[code](https://github.com/mjw2705/OTOS/tree/main/analysising_code)
+
+### pupil_size_detection code
+동공 크기 추출 GUI
+[code](https://github.com/mjw2705/OTOS/tree/main/pupil_size_detection_code)
+
+### analysis code
+추출된 동공 크기 분석 
+[code](https://github.com/mjw2705/OTOS/tree/main/analysising_code)
