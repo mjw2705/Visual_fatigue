@@ -1,6 +1,6 @@
-# Description
+# Visual fatigue analysis
 
-용접마스크 세대 별 시각피로도 분석 & 비교
+## Description
 
 눈 감은 시간, 눈 깜빡임 횟수, 동공 크기 변화율, 3가지 동공 움직임 특징을 기반으로 시각피로 측정
 
@@ -15,13 +15,14 @@
   
 
 ### recording code
-눈 영상 취득 녹화 GUI
-[code](https://github.com/mjw2705/OTOS/tree/main/analysising_code)
+[눈 영상 취득 녹화 GUI code](https://github.com/mjw2705/Visual_fatigue/tree/main/recording_code)
 
 ### pupil_size_detection code
-동공 크기 추출 GUI
-[code](https://github.com/mjw2705/OTOS/tree/main/pupil_size_detection_code)
+[동공 크기 추출 GUI](https://github.com/mjw2705/Visual_fatigue/tree/main/pupil_size_detection_code)
 
 ### analysis code
-추출된 동공 크기 분석 
-[code](https://github.com/mjw2705/OTOS/tree/main/analysising_code)
+[추출된 동공 크기 분석](https://github.com/mjw2705/Visual_fatigue/tree/main/analysising_code)
+
+
+## Demo
+![demo](demo_video.gif)
